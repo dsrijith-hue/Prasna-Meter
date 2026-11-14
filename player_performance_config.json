@@ -1,0 +1,222 @@
+{
+  "version": "1.0",
+  "note": "Sample values for tuning. Calibrate weights against logged match results before trusting the bands.",
+  "houses": {
+    "batting": {
+      "support": [
+        1,
+        3,
+        6,
+        10,
+        11
+      ],
+      "deny": [
+        8,
+        12
+      ],
+      "neutral": [
+        5,
+        9
+      ]
+    },
+    "bowling": {
+      "support": [
+        3,
+        6,
+        10,
+        11
+      ],
+      "optional_support": [
+        8
+      ],
+      "deny": [
+        12,
+        5
+      ],
+      "neutral": [
+        9
+      ]
+    }
+  },
+  "weights": {
+    "batting": {
+      "cusp10_sub_lord": 30,
+      "cusp6_sub_lord": 15,
+      "asc_moon_links": 15,
+      "dasha_lords": 20,
+      "role_planet_strength": 10,
+      "ruling_planets": 10
+    },
+    "bowling": {
+      "cusp6_sub_lord": 30,
+      "cusp10_sub_lord": 15,
+      "asc_moon_links": 15,
+      "dasha_lords": 20,
+      "role_planet_strength": 10,
+      "ruling_planets": 10
+    }
+  },
+  "penalties": {
+    "deny_house_link": -5,
+    "significator_retrograde": -3,
+    "significator_combust": -4,
+    "moon_void_of_course": -4,
+    "max_total_penalty": -20
+  },
+  "planet_roles": {
+    "MA": "power, pace, aggression",
+    "ME": "skill, spin, shot selection",
+    "SU": "leadership, big innings",
+    "MO": "form and mood",
+    "SA": "patience, Test endurance",
+    "VE": "timing and elegance",
+    "RA": "sudden spikes and collapses",
+    "JU": "game sense and consistency",
+    "KE": "detachment, unpredictable dips"
+  },
+  "role_bonus": {
+    "opener": [
+      "MA",
+      "SA"
+    ],
+    "middle_order": [
+      "ME",
+      "VE"
+    ],
+    "finisher": [
+      "MA",
+      "SU"
+    ],
+    "pacer": [
+      "MA"
+    ],
+    "spinner": [
+      "ME",
+      "VE"
+    ],
+    "all_rounder": [
+      "MA",
+      "ME"
+    ],
+    "keeper": [
+      "ME",
+      "MO"
+    ]
+  },
+  "bands": {
+    "batting": [
+      {
+        "min": 0,
+        "max": 30,
+        "label": "Low score / early dismissal"
+      },
+      {
+        "min": 31,
+        "max": 50,
+        "label": "Below par"
+      },
+      {
+        "min": 51,
+        "max": 70,
+        "label": "Par"
+      },
+      {
+        "min": 71,
+        "max": 85,
+        "label": "Strong"
+      },
+      {
+        "min": 86,
+        "max": 100,
+        "label": "Big innings"
+      }
+    ],
+    "bowling": [
+      {
+        "min": 0,
+        "max": 30,
+        "label": "Wicketless",
+        "wickets": 0
+      },
+      {
+        "min": 31,
+        "max": 60,
+        "label": "1 wicket likely",
+        "wickets": 1
+      },
+      {
+        "min": 61,
+        "max": 80,
+        "label": "2 wickets likely",
+        "wickets": 2
+      },
+      {
+        "min": 81,
+        "max": 100,
+        "label": "3+ wickets",
+        "wickets": 3
+      }
+    ]
+  },
+  "fantasy_points": {
+    "base_by_role": {
+      "opener": 40,
+      "middle_order": 35,
+      "finisher": 30,
+      "pacer": 35,
+      "spinner": 35,
+      "all_rounder": 45,
+      "keeper": 35
+    },
+    "formula": "base x (score / 50)",
+    "display": "range of +/- 20 percent, never a single number"
+  },
+  "calibration": {
+    "min_matches_before_trust": 50,
+    "log_fields": [
+      "player",
+      "role",
+      "format",
+      "batting_score",
+      "bowling_score",
+      "actual_runs",
+      "actual_wickets"
+    ],
+    "show_hit_rate_per_band": true,
+    "allow_weight_autotune": true
+  },
+  "sample_profiles": {
+    "batter_example": {
+      "player": "Sample Opener",
+      "role": "opener",
+      "format": "T20",
+      "component_scores": {
+        "cusp10_sub_lord": 26,
+        "cusp6_sub_lord": 10,
+        "asc_moon_links": 10,
+        "dasha_lords": 14,
+        "role_planet_strength": 8,
+        "ruling_planets": 6
+      },
+      "penalty_total": -4,
+      "final_batting_score": 70,
+      "band": "Par"
+    },
+    "bowler_example": {
+      "player": "Sample Pacer",
+      "role": "pacer",
+      "format": "T20",
+      "component_scores": {
+        "cusp6_sub_lord": 24,
+        "cusp10_sub_lord": 10,
+        "asc_moon_links": 9,
+        "dasha_lords": 15,
+        "role_planet_strength": 9,
+        "ruling_planets": 5
+      },
+      "penalty_total": -6,
+      "final_bowling_score": 66,
+      "band": "2 wickets likely"
+    }
+  }
+}
